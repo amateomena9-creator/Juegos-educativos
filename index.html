@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi Portal de Juegos Educativos</title>
+<meta name="description" content="Juegos educativos para aprender jugando, pensados para chicos y chicas de primaria.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fondo: #f7fbff;
+    --blanco: #ffffff;
+    --texto: #2c4a63;
+    --texto-suave: #5d7a93;
+    --azul: #7cc4f5;
+    --azul-claro: #e3f3ff;
+    --azul-fuerte: #3f9fe0;
+    --menta: #9fe3c8;
+    --menta-claro: #e2f8ef;
+    --menta-fuerte: #2fb585;
+    --amarillo: #ffe27a;
+    --amarillo-claro: #fff7d6;
+    --rosa-claro: #ffe8ee;
+    --radio: 28px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: "Fredoka", "Nunito", "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: var(--texto);
+    background:
+      radial-gradient(circle at 8% 12%, var(--amarillo-claro) 0, transparent 22%),
+      radial-gradient(circle at 92% 30%, var(--menta-claro) 0, transparent 26%),
+      var(--fondo);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ---------- Encabezado ---------- */
+  header {
+    text-align: center;
+    padding: 3.5rem 1.25rem 2.5rem;
+    background: linear-gradient(180deg, var(--azul-claro) 0%, var(--fondo) 100%);
+  }
+
+  header h1 {
+    font-size: clamp(2.2rem, 6vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--azul-fuerte);
+    max-width: 18ch;
+    margin: 0 auto 1rem;
+  }
+
+  header p {
+    font-size: clamp(1.15rem, 2.8vw, 1.5rem);
+    color: var(--texto-suave);
+    max-width: 34ch;
+    margin: 0 auto;
+  }
+
+  .bienvenida {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: .45rem 1.3rem;
+    background: var(--amarillo);
+    color: var(--texto);
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    animation: saludo 1.2s ease-out 0.3s both;
+  }
+
+  @keyframes saludo {
+    0% { transform: scale(.6) rotate(-6deg); opacity: 0; }
+    60% { transform: scale(1.08) rotate(2deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0); }
+  }
+
+  /* ---------- Cuadrícula ---------- */
+  main {
+    flex: 1;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 1.25rem 3rem;
+  }
+
+  main h2 {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .grilla {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.75rem;
+  }
+
+  /* ---------- Tarjetas ---------- */
+  .tarjeta {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2.25rem 1.5rem 1.75rem;
+    background: var(--blanco);
+    border: 4px solid var(--azul-claro);
+    border-radius: var(--radio);
+    box-shadow: 0 10px 0 var(--azul-claro);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+
+  .tarjeta:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 0 var(--azul-claro);
+  }
+
+  .icono {
+    display: grid;
+    place-items: center;
+    width: 110px;
+    height: 110px;
+    font-size: 4rem;
+    border-radius: 50%;
+    background: var(--azul-claro);
+    margin-bottom: 1rem;
+  }
+
+  .tarjeta h3 {
+    font-size: 1.7rem;
+    line-height: 1.2;
+    margin-bottom: .5rem;
+  }
+
+  .tarjeta p {
+    color: var(--texto-suave);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .etiqueta {
+    position: absolute;
+    top: -16px;
+    right: 18px;
+    padding: .3rem 1rem;
+    border-radius: 999px;
+    font-size: 1rem;
+    font-weight: 600;
+    background: var(--amarillo);
+  }
+
+  /* ---------- Botones ---------- */
+  .boton {
+    display: inline-block;
+    margin-top: auto;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font: inherit;
+    font-size: 1.35rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    color: var(--blanco);
+    background: var(--azul-fuerte);
+    border: none;
+    border-radius: 999px;
+    box-shadow: 0 6px 0 #2a7fbd;
+    cursor: pointer;
+    transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+  }
+
+  .boton:hover { background: #55b0ee; transform: translateY(-2px); box-shadow: 0 8px 0 #2a7fbd; }
+  .boton:active { transform: translateY(5px); box-shadow: 0 1px 0 #2a7fbd; }
+
+  a:focus-visible, .boton:focus-visible {
+    outline: 4px solid var(--amarillo);
+    outline-offset: 4px;
+  }
+
+  /* ---------- Juego destacado ---------- */
+  .tarjeta.destacada {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    gap: 2rem;
+    text-align: left;
+    padding: 2.5rem 2.25rem;
+    background: var(--menta-claro);
+    border-color: var(--menta);
+    box-shadow: 0 10px 0 var(--menta);
+  }
+
+  .tarjeta.destacada:hover { box-shadow: 0 16px 0 var(--menta); }
+
+  .tarjeta.destacada .icono {
+    flex-shrink: 0;
+    width: 170px;
+    height: 170px;
+    font-size: 6rem;
+    margin: 0;
+    background: var(--blanco);
+  }
+
+  .tarjeta.destacada .contenido { flex: 1; }
+  .tarjeta.destacada h3 { font-size: clamp(1.9rem, 4vw, 2.6rem); }
+  .tarjeta.destacada p { font-size: 1.25rem; margin-bottom: 1.5rem; }
+
+  .tarjeta.destacada .boton {
+    width: auto;
+    background: var(--menta-fuerte);
+    box-shadow: 0 6px 0 #1f8a63;
+    padding: 1.1rem 2.5rem;
+    font-size: 1.5rem;
+  }
+  .tarjeta.destacada .boton:hover { background: #3cc794; box-shadow: 0 8px 0 #1f8a63; }
+  .tarjeta.destacada .boton:active { box-shadow: 0 1px 0 #1f8a63; }
+
+  /* ---------- Próximamente ---------- */
+  .tarjeta.proximamente {
+    background: var(--amarillo-claro);
+    border: 4px dashed var(--amarillo);
+    box-shadow: none;
+  }
+
+  .tarjeta.proximamente:hover { transform: none; box-shadow: none; }
+  .tarjeta.proximamente .icono { background: var(--blanco); }
+
+  .tarjeta.proximamente .boton {
+    background: #e9e4cf;
+    color: #8a8466;
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* ---------- Pie de página ---------- */
+  footer {
+    text-align: center;
+    padding: 2rem 1.25rem 2.5rem;
+    background: var(--azul-claro);
+    color: var(--texto-suave);
+    font-size: 1.1rem;
+  }
+
+  footer strong { color: var(--texto); }
+
+  /* ---------- Celulares ---------- */
+  @media (max-width: 640px) {
+    body { font-size: 1.1rem; }
+    .tarjeta.destacada { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem 1.75rem; }
+    .tarjeta.destacada .icono { width: 130px; height: 130px; font-size: 4.5rem; }
+    .tarjeta.destacada .boton { width: 100%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🎮 Mi Portal de Juegos Educativos 🚀</h1>
+  <p>¡Elegí un juego, aprendé cosas nuevas y divertite mientras superás cada desafío!</p>
+  <span class="bienvenida">¡Hola, explorador! 👋</span>
+</header>
+
+<main>
+  <h2>Elegí tu juego</h2>
+
+  <div class="grilla">
+
+    <!-- ===== JUEGO DESTACADO ===== -->
+    <article class="tarjeta destacada">
+      <span class="etiqueta">⭐ ¡Destacado!</span>
+      <div class="icono" aria-hidden="true">🔢</div>
+      <div class="contenido">
+        <h3>Maestro de los Decimales</h3>
+        <p>Superá cada nivel, resolvé los ejercicios con números decimales y ganá tu diploma de maestro.</p>
+        <a class="boton" href="juegos/decimales/index.html">¡Jugar ahora!</a>
+      </div>
+    </article>
+
+    <!-- ===== PRÓXIMAMENTE (ejemplos) ===== -->
+    <article class="tarjeta proximamente">
+      <span class="etiqueta">⏳ Próximamente</span>
+      <div class="icono" aria-hidden="true">🍕</div>
+      <h3>Reino de las Fracciones</h3>
+      <p>Muy pronto vas a poder partir, comparar y sumar fracciones.</p>
+      <span class="boton" aria-disabled="true">Muy pronto</span>
+    </article>
+
+    <article class="tarjeta proximamente">
+      <span class="etiqueta">⏳ Próximamente</span>
+      <div class="icono" aria-hidden="true">🪐</div>
+      <h3>Galaxia Matemática</h3>
+      <p>Una misión espacial para practicar cuentas y resolver problemas.</p>
+      <span class="boton" aria-disabled="true">Muy pronto</span>
+    </article>
+
+    <!--
+      ===== CÓMO AGREGAR UN JUEGO NUEVO =====
+      1. Copiá uno de los bloques <article> de arriba.
+      2. Cambiá el emoji, el título y la descripción.
+      3. Si el juego ya está listo:
+         - Sacá la clase "proximamente" y la etiqueta.
+         - Cambiá <span class="boton" ...> por:
+           <a class="boton" href="juegos/NOMBRE/index.html">¡Jugar ahora!</a>
+    -->
+
+  </div>
+</main>
+
+<footer>
+  <p>Hecho con 💙 para aprender jugando.</p>
+  <p><strong>¡Seguí jugando, seguí aprendiendo!</strong> ✨</p>
+</footer>
+
+</body>
+</html>
